@@ -10,15 +10,25 @@
 	<title></title>
 </head>
 <body>
+    
+
     <div class="col-3 mx-auto mt-5">
+        <div class="mx-auto mb-2">
+            <h1>SOPA DE LETRAS</h1>
+        </div>
         <form action="main.php" method="post">
-            <!-- <input type="text" class="input" name="PIN" placeholder="Game PIN"> -->
-            <input class="form-control form-control-lg " type="text" name="nickName" placeholder="Nickname" style="text-align: center">
-            <select name="size" id="size" class="custom-select mt-3">
-                <option value="small">Small (10x10)</option>
-                <option value="medium">Medium (15x15)</option>
-                <option value="big">Big (20x20)</option>
-            </select>
+            <input class="form-control form-control-lg " type="text" name="nickName" placeholder="Nickname" style="text-align: center" required>
+            <div class="form-row mt-3">
+                <div class="col">
+                    <input type="number" class="form-control" placeholder="Columns" min="8" max="25" name="columns" required>
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" placeholder="Rows" min="8" max="25" name="rows" required>
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" placeholder="Words" min="5" max="15" name="words" required>
+                </div>
+            </div>
             <input type="submit" class="btn btn-success btn-lg btn-block mt-3" value="Play!">
             
         </form>
