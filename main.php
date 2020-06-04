@@ -9,6 +9,9 @@
   .palabra:focus{
     background:red;
   } 
+  .showpalabra{
+    background:red;
+  }
   </style>
 </head>
 <body>
@@ -87,7 +90,7 @@ function crearTabla($tabla){
     for ($row = 0; $row < $datos["height"]; $row++){
       $sopaDeLetras .= "<tr>\n";
       for ($col = 0; $col < $datos["width"]; $col++){
-        $sopaDeLetras .= " <td width = 15>{$tabla[$row][$col]}</td>\n";
+        $sopaDeLetras .= " <td width = 50>{$tabla[$row][$col]}</td>\n";
       }
       $sopaDeLetras .= "</tr>\n";
     }
@@ -155,12 +158,12 @@ function addWord($theWord, $dir, $count){
         $boardLetter = $tabla[$newRow][$newCol + $i];
         $wordLetter = substr($theWord, $i, 1);
   
-        
+        //con este if controlamos que la letra de la palabra nueva que estamos asignando al tablero se ponga solo en espacios libres o si la letra que ya hay en ese espacio
+        //es la misma que la que vamos asignar, es decir, que las palabras se pueden solapar si comparten alguna letra
         if (($boardLetter == $wordLetter) ||
             ($boardLetter == ".")){
-          $tabla[$newRow][$newCol + $i] = '<button type="submit" class="palabra palabra'.$count.'">'.$wordLetter.'</button>';
-          //$tabla[$newRow][$newCol + $i] =  '<label for="letra'.$i.'"><input id="letra'.$i.'" class="letra'.$i.'" type="checkbox" /><span>'.$wordLetter.'</span></label>';
-
+          $tabla[$newRow][$newCol + $i] = '<button type="submit" class="palabra">'.$wordLetter.'</button>';
+          //$tabla[$newRow][$newCol + $i] = '<button type="submit" class="showpalabra">'.$wordLetter.'</button>';
         } else {
           $tablaCompleta = FALSE;
         } 
@@ -176,13 +179,13 @@ function addWord($theWord, $dir, $count){
         
         $boardLetter = $tabla[$newRow + $i][$newCol];
         $wordLetter = substr($theWord, $i, 1);
+
+        //con este if controlamos que la letra de la palabra nueva que estamos asignando al tablero se ponga solo en espacios libres o si la letra que ya hay en ese espacio
+        //es la misma que la que vamos asignar, es decir, que las palabras se pueden solapar si comparten alguna letra
         if (($boardLetter == $wordLetter) ||
             ($boardLetter == ".")){
-          $tabla[$newRow + $i][$newCol] = '<button type="submit" class="palabra palabra'.$count.'">'.$wordLetter.'</button>';
-          //$tabla[$newRow + $i][$newCol] =  '<label for="palabra'.$count.'"><input id="palabra'.$count.'" class="palabra'.$count.'" type="checkbox" /><span>'.$wordLetter.'</span></label>';
-          // echo 'letra de cada Palabra: <span style="color:blue">'.$wordLetter.'</span> <br>';
-          // echo '<button type="submit">'.$wordLetter.'</button>';
-          
+          $tabla[$newRow + $i][$newCol] = '<button type="submit" class="palabra">'.$wordLetter.'</button>';
+          //$tabla[$newRow + $i][$newCol] = '<button type="submit" class="showpalabra">'.$wordLetter.'</button>';
         } else {
          $tablaCompleta = FALSE;
         } 
